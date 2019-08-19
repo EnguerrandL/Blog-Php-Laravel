@@ -4,9 +4,17 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 
-use App\Http\Controllers\Controller;
 
-use App\Post;
+
+
+use App\Http\Controllers\Controller;
+use App\Http\Requests\PostRequest;
+
+
+use App\Models\Post;
+use App\Models\Category;
+
+
 
 
 // Importation des sessions
@@ -19,24 +27,28 @@ class PostController extends Controller
 
     public function index()
     {
-        $posts = Post::all(); 
+        $posts = Post::paginate(5);
 
         return view('admin.posts.index', [
            'posts' => $posts,
            ]);
     }
 
- 
+
     public function create()
     {
-        return view('admin.posts.create');
+        $categorie = Category::all();
+        return view('admin.posts.create', ['categorie' => $categorie]);
     }
 
- 
-    public function store(Request $request)
+
+    public function store(PostRequest $request)
     {
         dump($request);
 
+        $validated = $request->validated();
+        dump($validated);
+        die;
         $post = new Post;
         $post->title = $request->input('title');
         $post->content = $request->input('content');
@@ -50,16 +62,16 @@ class PostController extends Controller
         //
     }
 
-   
+
     public function edit($id)
     {
-        $post = Post::find($id); 
+        $post = Post::find($id);
         return view('admin.posts.edit', [
             'post' => $post,
         ]);
     }
 
- 
+
     public function update(Request $request, $id)
     {
         $post = Post::find($id);
@@ -68,11 +80,11 @@ class PostController extends Controller
         $post->save();
         $request->session()->flash('status', 'Article bien modifié');
         $request->session()->flash('type', 'success');
-        
+
         return redirect()->route('posts.index');
     }
 
-   
+
     public function destroy($id)
     {
         $post = Post::find($id);

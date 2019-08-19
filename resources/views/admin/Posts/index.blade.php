@@ -16,6 +16,9 @@
           <a class="mb-2 btn btn-primary m-2" href="{{ route('posts.create') }}"> 
           Créer un article 
           </a>
+          <hr>
+          {{ $posts->links() }}
+          <hr>
 </div>
             <table class="table table-hover table-bordered">
                 <thead class="thead-dark">
@@ -43,5 +46,6 @@
             </table>
         </div>
     </div>
+    
 </div>
 @endsection

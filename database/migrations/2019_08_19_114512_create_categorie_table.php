@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateUpdatePostsTable extends Migration
+class CreateCategorieTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,10 @@ class CreateUpdatePostsTable extends Migration
      */
     public function up()
     {
-        Schema::create('posts', function (Blueprint $table) {
+        Schema::create('categorie', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('title'); 
-            $table->string('content');
-            $table->boolean('active')->default(0);
-            $table->boolean('draft')->default(0);
+            $table->string('title');
             $table->timestamps();
-            $table->enum('theme', ['Symfony', 'Laravel', 'Wordpress']);
         });
     }
 
@@ -31,6 +27,6 @@ class CreateUpdatePostsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('posts');
+        Schema::dropIfExists('categorie');
     }
 }

@@ -3,10 +3,10 @@
 @section('content')
 
 @foreach($categories as $category)
-       <div class="col-12 text-center p-1" ><a class="btn btn-info  " href="{{route('category',['id' => $category->title]) }}">{{ $category->title }}</a></div>
+       <div class=" col-12 text-center p-1" ><a class="btn btn-info  " href="{{route('category',['title' => $category->title]) }}">{{ $category->title }}</a></div>
 @endforeach
 
-
+<h1 class="col-12 mx-auto text-center m-3"> Vous êtes dans la catégorie : {{ $category_title }} </h1>
 {{ $posts->links() }}
             @foreach($posts as $post)
 

@@ -11,7 +11,7 @@ class Post extends Model
 
     {
 
-    return $this->hasOne ('App\Category');
+    return $this->belongsTo(Category::class, 'category_id');
 
     }
 }

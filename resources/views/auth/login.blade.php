@@ -65,6 +65,8 @@
                             </div>
                         </div>
                     </form>
+                    <hr>
+
                 </div>
             </div>
         </div>

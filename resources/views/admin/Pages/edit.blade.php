@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="text-center card-header">Modification de l'article</div>
+                <div class="text-center card-header">Modification la page</div>
 
                 <div class="card-body">
                     @if (session('status'))
@@ -23,7 +23,7 @@
                         </ul>
                     </div>
                 @endif
-                    <form class="form-group text-center" action="{{ route('posts.update', ['id' => $post->id]) }}" method="POST">
+                    <form class="form-group text-center" action="{{ route('pages.update', ['id' => $page->id]) }}" method="POST">
                     @method('PUT')
                     @csrf
 
@@ -39,8 +39,8 @@
 
                     </select>
 
-                    <input value="@if (old('title')) {{ old('title') }} @else {{ $post->title }} @endif" name="title" type="texte">
-                    <input value="{{ $post->content }}" type="text" name="content">@if (old('content')) {{ old('content') }} @else {{ $post->content }} @endif
+                    <input value="@if (old('title')) {{ old('title') }} @else {{ $page->title }} @endif" name="title" type="texte">
+                    <input value="{{ $page->content }}" type="text" name="content">@if (old('content')) {{ old('content') }} @else {{ $page->content }} @endif
                     <input type="submit" value="envoyer">
                     </form>
                 </div>

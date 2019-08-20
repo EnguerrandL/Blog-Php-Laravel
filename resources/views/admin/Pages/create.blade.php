@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="text-center card-header">Création d'un article</div>
+                <div class="text-center card-header">Création D'une page</div>
 
                 <div class="card-body">
                     @if (session('status'))
@@ -23,7 +23,7 @@
         </ul>
     </div>
 @endif
-                    <form class="text-center" action="{{ route('posts.store') }}" method="POST">
+                    <form class="text-center" action="{{ route('pages.store') }}" method="POST">
                     @csrf
                     <label for="">Titre</label>
                     <input value="{{ old('title') }}" type="text" name="title">
@@ -47,12 +47,7 @@
                     </select>
 
                     <br>
-                    <select name="category_id">
-                    @foreach($categorie as $category)
-                    <option value="{{$category->id}}">{{$category->title}}
-                    </option>
-                    @endforeach
-                    </select>
+
 
                     <br>
                     <input type="submit" value="envoyer">

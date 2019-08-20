@@ -13,45 +13,44 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
 <div class="text-center">
-          <a class="mb-2 btn btn-primary m-2" href="{{ route('posts.create') }}">
-          Créer un article
+          <a class="mb-2 btn btn-primary m-2" href="{{ route('pages.create') }}">
+          Créer une page
           </a>
           <hr>
-          {{ $posts->links() }}
+          {{ $pages->links() }}
           <hr>
 </div>
             <table class="table table-hover table-bordered">
                 <thead class="thead-dark">
                     <tr>
                         <td>TITRE</td>
-                        <td>Catégorie</td>
                         <td>Date de Création</td>
                         <td>Dernière Modification</td>
                         <td class="text-center">ACTIONS</td>
                     </tr>
                 </thead>
-                @foreach($posts as $post)
+                @foreach($pages as $page)
                     <tr>
-                    <td>{{ $post->title }}</td>
+                    <td>{{ $page->title }}</td>
 
 
 
                     <td>
 
-                       @if ($post->category)
-                       {{ $post->category->title }}
+                       @if ($page->category)
+                       {{ $page->category->title }}
                         @endif
                     </td>
 
 
-                    <td>{{ $post->created_at->format('d/m/Y H:i:s') }}</td>
-                    <td>{{ $post->updated_at->diffForHumans() }}</td>
+                    <td>{{ $page->created_at->format('d/m/Y H:i:s') }}</td>
+                    <td>{{ $page->updated_at->diffForHumans() }}</td>
 
-                                  <td class="text-right">     <a class="mb-2 btn btn-secondary m-2 p-1 text-right" href="{{ route('posts.edit', ['id'=>$post->id]) }}">
-                                   Modifier l'article
+                                  <td class="text-right">     <a class="mb-2 btn btn-secondary m-2 p-1 text-right" href="{{ route('pages.edit', ['id'=>$page->id]) }}">
+                                   Modifier la page
                                   </a>
-                                  <a class="mb-2 btn btn-danger  m-2 p-1 " href="{{ route('posts.destroy',  ['id'=>$post->id]) }}">
-                                  Supprimer l'article
+                                  <a class="mb-2 btn btn-danger  m-2 p-1 " href="{{ route('pages.destroy',  ['id'=>$page->id]) }}">
+                                  Supprimer la page
                                   </a></td>
                     </tr>
                 @endforeach

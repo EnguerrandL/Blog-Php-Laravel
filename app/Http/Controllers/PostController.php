@@ -2,7 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Post; 
+use App\Models\Category;
+use App\Models\Post;
 use Illuminate\Http\Request;
 
 
@@ -20,16 +21,49 @@ class PostController extends Controller
     }
 
 
+public function category($title)
+  {
+
+
+
+    $category = Category::where([
+        ['title', '=', $title]
+    ])->first();
+    $categories = Category::all();
+    $postsCat = Post::where([
+        ['active', '=', true],
+        ['draft', '=', false],
+        ['category_id', "=", $category->id]
+
+        ])
+
+        ->orderBy('created_at', 'DESC')
+        ->paginate(9);
+
+    return view('category', [
+        'posts' => $postsCat,
+        'categories' => $categories,
+        'category_title' => $category->title
+    ]);
+  }
+
     public function articles()
      {
-         $posts = Post::all(); 
+         $categories = Category::all();
+         $posts = Post::where([
+             ['active', '=', true],
+             ['draft', "=", false]
+             ])
+             ->orderBy('created_at', 'DESC')
+             ->paginate(9);
 
          return view('articles', [
             'posts' => $posts,
+            'categories' => $categories,
             ]);
      }
 
-    
+
     public function article($id)
     {
         /*$post = new Post;
@@ -45,9 +79,9 @@ class PostController extends Controller
 
         return view('article', [
         'post' => $post,
-       
-        
-        
+
+
+
         ]);
     }
 }

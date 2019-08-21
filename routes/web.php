@@ -1,6 +1,6 @@
 <?php
 
-Route::middleware('auth')->namespace('Admin')->group(function() {
+Route::prefix('administration')->middleware('auth', 'CheckIsAdmin')->namespace('Admin')->group(function() {
 
 
     Route::resource('pages', 'PageController');

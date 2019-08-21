@@ -22,7 +22,7 @@ class CommentController extends Controller
         $comment->user_id = auth()->user()->id;
         $comment->save();
 
-        $request->session()->flash('status', 'Votre commentaire a bien été pris en compte');
+       Session::flash('status', 'Votre commentaire a bien été pris en compte');
 
         return back();
 

@@ -50,9 +50,16 @@
                                   <td class="text-right">     <a class="mb-2 btn btn-secondary m-2 p-1 text-right" href="{{ route('posts.edit', ['id'=>$post->id]) }}">
                                    Modifier l'article
                                   </a>
-                                  <a class="mb-2 btn btn-danger  m-2 p-1 " href="{{ route('posts.destroy',  ['id'=>$post->id]) }}">
-                                  Supprimer l'article
-                                  </a></td>
+
+
+                                  <form action="{{ route('posts.destroy',  ['id'=>$post->id]) }}" method="POST">
+                                    @method('DELETE')
+                                    @csrf
+                                    <button class="mb-2 btn btn-danger  m-2 p-1 " type="submit">Supprimer l'article</button>
+                                </form>
+
+
+                                </td>
                     </tr>
                 @endforeach
             </table>

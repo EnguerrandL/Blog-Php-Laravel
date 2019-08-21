@@ -35,12 +35,12 @@
 
 
 
-                    <td>
+                    {{-- <td>
 
                        @if ($page->category)
                        {{ $page->category->title }}
                         @endif
-                    </td>
+                    </td> --}}
 
 
                     <td>{{ $page->created_at->format('d/m/Y H:i:s') }}</td>
@@ -49,9 +49,16 @@
                                   <td class="text-right">     <a class="mb-2 btn btn-secondary m-2 p-1 text-right" href="{{ route('pages.edit', ['id'=>$page->id]) }}">
                                    Modifier la page
                                   </a>
-                                  <a class="mb-2 btn btn-danger  m-2 p-1 " href="{{ route('pages.destroy',  ['id'=>$page->id]) }}">
-                                  Supprimer la page
-                                  </a></td>
+
+
+                                   <form action="{{ route('pages.destroy',  ['id'=>$page->id]) }}" method="POST">
+                                      @method('DELETE')
+                                      @csrf
+                                      <button class="mb-2 btn btn-danger  m-2 p-1 " type="submit">Supprimer la page</button>
+                                  </form> </td>
+
+
+
                     </tr>
                 @endforeach
             </table>

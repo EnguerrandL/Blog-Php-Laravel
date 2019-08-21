@@ -27,24 +27,28 @@
                     @csrf
                     <label for="">Titre</label>
                     <input value="{{ old('title') }}" type="text" name="title">
-                    <label for="">Contenu</label>
+                    <br>
 
-                    <textarea name="content" id="content" cols="30" rows="10">
+                    <label for="slug">Slug</label>
+                    <input value="{{ old('slug') }}" type="text" name="slug">
+                    <br>
+
+
+                    <label for="">Contenu</label>
+                    <textarea name="content" id="content">
                         {{ old('content') }}
                     </textarea>
-
                     <br>
+
+
+
 
 
                     <input type="checkbox" name="draft"> Cocher si c'est un brouillon
+                    <br>
                     <input type="checkbox" name="active"> Cocher si visible sur le site
 
-                    <br>
-                    <select name="theme">
-                    <option value="Symfony">Symfony</option>
-                    <option value="Laravel">Laravel</option>
-                    <option value="Wordpress">Wordpress</option>
-                    </select>
+
 
                     <br>
 

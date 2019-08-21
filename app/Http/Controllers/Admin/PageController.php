@@ -1,12 +1,16 @@
 <?php
-
 namespace App\Http\Controllers\Admin;
 
-use Illuminate\Http\PageRequest;
+
+
 use App\Http\Controllers\Controller;
+use App\Http\Requests\PageRequest;
 use App\Models\Page;
+use Illuminate\Support\Facades\Request;
+use Illuminate\Support\Facades\Session;
 
 class PageController extends Controller
+
 {
 
 
@@ -67,16 +71,16 @@ class PageController extends Controller
     {
         $page = Page::find($id);
 
-        return view('admin.page.sedit', [
+        return view('admin.pages.edit', [
             'page' => $page,
 
         ]);
     }
 
 
-    public function update(PostRequest $request, $id)
+    public function update(PageRequest $request, $id)
     {
-        $data = Post::find($id);
+        $data = Page::find($id);
         $page = new Page;
         $page->title = $data['title'];
         $page->slug = $data['slug'];
@@ -104,9 +108,9 @@ class PageController extends Controller
     }
 
 
-    public function destroy($id)
+    public function destroy(Request $request, $id)
     {
-        $page = Post::find($id);
+        $page = Page::find($id);
         $page->delete();
 
 

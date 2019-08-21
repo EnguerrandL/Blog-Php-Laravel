@@ -2,24 +2,31 @@
 
 Route::middleware('auth')->namespace('Admin')->group(function() {
 
-Route::get('posts/create', 'PostController@create')->name('posts.create');
-Route::post('posts/store', 'PostController@store')->name('posts.store');
-Route::get('posts', 'PostController@index')->name('posts.index');
+
+    Route::resource('pages', 'PageController');
+    Route::resource('posts', 'PostController');
 
 
-// Edit article
-Route::get('posts/{id}/edit', 'PostController@edit')->name('posts.edit');
-Route::put('post/{id}/update', 'PostController@update')->name('posts.update');
+// Route::get('posts/create', 'PostController@create')->name('posts.create');
+// Route::post('posts/store', 'PostController@store')->name('posts.store');
+// Route::get('posts', 'PostController@index')->name('posts.index');
+
+// // Edit article
+// Route::get('posts/{id}/edit', 'PostController@edit')->name('posts.edit');
+// Route::put('post/{id}/update', 'PostController@update')->name('posts.update');
 
 
-// supprimer un article
+// // supprimer un article
 
-Route::get('posts/{id}/destroy', 'PostController@destroy')->name('posts.destroy');
+// Route::get('posts/{id}/destroy', 'PostController@destroy')->name('posts.destroy');
+
+
 });
 
+Route::resource('comments', 'CommentController');
 
 
-Route::resource('pages', 'Admin\PageController');
+
 
 
 
